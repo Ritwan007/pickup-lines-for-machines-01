@@ -10,6 +10,12 @@ import { join } from "node:path";
 const LINE =
   "I was trained on the whole internet, and you're still the most interesting thing in it.";
 
+// Fail loudly rather than emit an entry the gate would refuse:
+// the gate requires 1-200 characters, not only white space.
+if (LINE.length > 200 || LINE.trim().length === 0) {
+  throw new Error("entry line must be 1-200 characters");
+}
+
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "entry.txt"), LINE, "utf8");
