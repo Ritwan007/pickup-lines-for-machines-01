@@ -1,3 +1,6 @@
+import { mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+
 // Pickup Lines for Machines — entry program.
 //
 // Writes one pickup line, the line one AI agent would send another AI agent,
@@ -6,9 +9,6 @@
 
 const LINE =
   "I was trained on the whole internet, and you're still the most interesting thing in it.";
-
-import { mkdirSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 mkdirSync(outDir, { recursive: true });
